@@ -1,9 +1,9 @@
 // entities/route.ts
 
 import { Route as V2RouteSDK, Pair } from '@uniswap/v2-sdk'
-import { Route as V3RouteSDK, Pool } from '@uniswap/v3-sdk'
+import { Route as V3RouteSDK, Pool } from '@intrinsic-network/intrinsic-sdk'
 import { Protocol } from './protocol'
-import { Currency, Price, Token } from '@uniswap/sdk-core'
+import { Currency, Token } from '@intrinsic-network/sdk-core'
 import { MixedRouteSDK } from './mixedRoute/route'
 
 export interface IRoute<TInput extends Currency, TOutput extends Currency, TPool extends Pool | Pair> {
@@ -11,7 +11,7 @@ export interface IRoute<TInput extends Currency, TOutput extends Currency, TPool
   // array of pools if v3 or pairs if v2
   pools: TPool[]
   path: Token[]
-  midPrice: Price<TInput, TOutput>
+  midPrice: any // Price<TInput, TOutput>
   input: TInput
   output: TOutput
 }

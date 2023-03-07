@@ -1,4 +1,4 @@
-import { Percent, Token } from '@uniswap/sdk-core'
+import { Percent, Token } from '@intrinsic-network/sdk-core'
 import JSBI from 'jsbi'
 import { PaymentsExtended } from './paymentsExtended'
 
@@ -10,33 +10,33 @@ const feeOptions = {
   recipient: '0x0000000000000000000000000000000000000009',
 }
 
-const token = new Token(1, '0x0000000000000000000000000000000000000001', 18, 't0', 'token0')
+const token = new Token(30, '0x0000000000000000000000000000000000000001', 18, 't0', 'token0')
 
 describe('PaymentsExtended', () => {
-  describe('#encodeUnwrapWETH9', () => {
+  describe('#encodeUnwrapWRBTC', () => {
     it('works without recipient', () => {
-      const calldata = PaymentsExtended.encodeUnwrapWETH9(amount)
-      expect(calldata).toBe('0x49616997000000000000000000000000000000000000000000000000000000000000007b')
+      const calldata = PaymentsExtended.encodeUnwrapWRBTC(amount)
+      expect(calldata).toBe('0x8df1280a000000000000000000000000000000000000000000000000000000000000007b')
     })
 
     it('works with recipient', () => {
-      const calldata = PaymentsExtended.encodeUnwrapWETH9(amount, recipient)
+      const calldata = PaymentsExtended.encodeUnwrapWRBTC(amount, recipient)
       expect(calldata).toBe(
-        '0x49404b7c000000000000000000000000000000000000000000000000000000000000007b0000000000000000000000000000000000000000000000000000000000000003'
+        '0x67dd35f6000000000000000000000000000000000000000000000000000000000000007b0000000000000000000000000000000000000000000000000000000000000003'
       )
     })
 
     it('works with recipient and with fee', () => {
-      const calldata = PaymentsExtended.encodeUnwrapWETH9(amount, recipient, feeOptions)
+      const calldata = PaymentsExtended.encodeUnwrapWRBTC(amount, recipient, feeOptions)
       expect(calldata).toBe(
-        '0x9b2c0a37000000000000000000000000000000000000000000000000000000000000007b0000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000009'
+        '0x8493948e000000000000000000000000000000000000000000000000000000000000007b0000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000009'
       )
     })
 
     it('works without recipient and with fee', () => {
-      const calldata = PaymentsExtended.encodeUnwrapWETH9(amount, undefined, feeOptions)
+      const calldata = PaymentsExtended.encodeUnwrapWRBTC(amount, undefined, feeOptions)
       expect(calldata).toBe(
-        '0xd4ef38de000000000000000000000000000000000000000000000000000000000000007b000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000009'
+        '0x14d8f137000000000000000000000000000000000000000000000000000000000000007b000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000009'
       )
     })
   })
@@ -78,8 +78,8 @@ describe('PaymentsExtended', () => {
     )
   })
 
-  it('#encodeWrapETH', () => {
-    const calldata = PaymentsExtended.encodeWrapETH(amount)
-    expect(calldata).toBe('0x1c58db4f000000000000000000000000000000000000000000000000000000000000007b')
+  it('#encodeWrapRBTC', () => {
+    const calldata = PaymentsExtended.encodeWrapRBTC(amount)
+    expect(calldata).toBe('0x89b09068000000000000000000000000000000000000000000000000000000000000007b')
   })
 })

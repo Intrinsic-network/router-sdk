@@ -1,6 +1,13 @@
 import { Interface } from '@ethersproject/abi'
-import { Currency, CurrencyAmount, Percent, TradeType, validateAndParseAddress, WETH9 } from '@uniswap/sdk-core'
-import { abi } from '@uniswap/swap-router-contracts/artifacts/contracts/interfaces/ISwapRouter02.sol/ISwapRouter02.json'
+import {
+  Currency,
+  CurrencyAmount,
+  Percent,
+  TradeType,
+  validateAndParseAddress,
+  WRBTC,
+} from '@intrinsic-network/sdk-core'
+import { abi } from '@intrinsic-network/swap-router-contracts/artifacts/contracts/interfaces/ISwapRouter02.sol/ISwapRouter02.json'
 import { Trade as V2Trade } from '@uniswap/v2-sdk'
 import {
   encodeRouteToPath,
@@ -13,7 +20,7 @@ import {
   SelfPermit,
   toHex,
   Trade as V3Trade,
-} from '@uniswap/v3-sdk'
+} from '@intrinsic-network/intrinsic-sdk'
 import invariant from 'tiny-invariant'
 import JSBI from 'jsbi'
 import { ADDRESS_THIS, MSG_SENDER } from './constants'
@@ -29,7 +36,7 @@ import { MixedRouteSDK } from './entities/mixedRoute/route'
 import { partitionMixedRouteByProtocol, getOutputOfPools } from './utils'
 
 const ZERO = JSBI.BigInt(0)
-const REFUND_ETH_PRICE_IMPACT_THRESHOLD = new Percent(JSBI.BigInt(50), JSBI.BigInt(100))
+const REFUND_RBTC_PRICE_IMPACT_THRESHOLD = new Percent(JSBI.BigInt(50), JSBI.BigInt(100))
 
 /**
  * Options for producing the arguments to send calls to the router.
@@ -296,7 +303,7 @@ export abstract class SwapRouter {
             const exactInputParams = {
               path,
               // By default router holds funds until the last swap, then it is sent to the recipient
-              // special case exists where we are unwrapping WETH output, in which case `routerMustCustody` is set to true
+              // special case exists where we are unwrapping WRBTC output, in which case `routerMustCustody` is set to true
               // and router still holds the funds. That logic bundled into how the value of `recipient` is calculated
               recipient: isLastSectionInRoute(i) ? recipient : ADDRESS_THIS,
               amountIn: i == 0 ? amountIn : 0,
@@ -360,7 +367,7 @@ export abstract class SwapRouter {
         if (route.protocol == Protocol.V2) {
           individualTrades.push(
             new V2Trade(
-              route as RouteV2<Currency, Currency>,
+              route as unknown as RouteV2<Currency, Currency>,
               trades.tradeType == TradeType.EXACT_INPUT ? inputAmount : outputAmount,
               trades.tradeType
             )
@@ -368,7 +375,7 @@ export abstract class SwapRouter {
         } else if (route.protocol == Protocol.V3) {
           individualTrades.push(
             V3Trade.createUncheckedTrade({
-              route: route as RouteV3<Currency, Currency>,
+              route: route as unknown as RouteV3<Currency, Currency>,
               inputAmount,
               outputAmount,
               tradeType: trades.tradeType,
@@ -428,7 +435,7 @@ export abstract class SwapRouter {
     //      in that the reversion probability is lower
     const performAggregatedSlippageCheck = sampleTrade.tradeType === TradeType.EXACT_INPUT && numberOfTrades > 2
     // flag for whether funds should be send first to the router
-    //   1. when receiving ETH (which much be unwrapped from WETH)
+    //   1. when receiving RBTC (which much be unwrapped from WRBTC)
     //   2. when a fee on the output is being taken
     //   3. when performing swap and add
     //   4. when performing an aggregated slippage check
@@ -527,7 +534,7 @@ export abstract class SwapRouter {
     // unwrap or sweep
     if (routerMustCustody) {
       if (outputIsNative) {
-        calldatas.push(PaymentsExtended.encodeUnwrapWETH9(minimumAmountOut.quotient, options.recipient, options.fee))
+        calldatas.push(PaymentsExtended.encodeUnwrapWRBTC(minimumAmountOut.quotient, options.recipient, options.fee))
       } else {
         calldatas.push(
           PaymentsExtended.encodeSweepToken(
@@ -540,10 +547,10 @@ export abstract class SwapRouter {
       }
     }
 
-    // must refund when paying in ETH: either with an uncertain input amount OR if there's a chance of a partial fill.
-    // unlike ERC20's, the full ETH value must be sent in the transaction, so the rest must be refunded.
+    // must refund when paying in RBTC: either with an uncertain input amount OR if there's a chance of a partial fill.
+    // unlike ERC20's, the full RBTC value must be sent in the transaction, so the rest must be refunded.
     if (inputIsNative && (sampleTrade.tradeType === TradeType.EXACT_OUTPUT || SwapRouter.riskOfPartialFill(trades))) {
-      calldatas.push(Payments.encodeRefundETH())
+      calldatas.push(Payments.encodeRefundRBTC())
     }
 
     return {
@@ -585,9 +592,9 @@ export abstract class SwapRouter {
     const zeroForOne = position.pool.token0.wrapped.address === totalAmountSwapped.currency.wrapped.address
     const { positionAmountIn, positionAmountOut } = SwapRouter.getPositionAmounts(position, zeroForOne)
 
-    // if tokens are native they will be converted to WETH9
-    const tokenIn = inputIsNative ? WETH9[chainId] : positionAmountIn.currency.wrapped
-    const tokenOut = outputIsNative ? WETH9[chainId] : positionAmountOut.currency.wrapped
+    // if tokens are native they will be converted to WRBTC
+    const tokenIn = inputIsNative ? WRBTC[chainId] : positionAmountIn.currency.wrapped
+    const tokenOut = outputIsNative ? WRBTC[chainId] : positionAmountOut.currency.wrapped
 
     // if swap output does not make up whole outputTokenBalanceDesired, pull in remaining tokens for adding liquidity
     const amountOutRemaining = positionAmountOut.subtract(quoteAmountOut.wrapped)
@@ -595,13 +602,13 @@ export abstract class SwapRouter {
       // if output is native, this means the remaining portion is included as native value in the transaction
       // and must be wrapped. Otherwise, pull in remaining ERC20 token.
       outputIsNative
-        ? calldatas.push(PaymentsExtended.encodeWrapETH(amountOutRemaining.quotient))
+        ? calldatas.push(PaymentsExtended.encodeWrapRBTC(amountOutRemaining.quotient))
         : calldatas.push(PaymentsExtended.encodePull(tokenOut, amountOutRemaining.quotient))
     }
 
-    // if input is native, convert to WETH9, else pull ERC20 token
+    // if input is native, convert to WRBTC, else pull ERC20 token
     inputIsNative
-      ? calldatas.push(PaymentsExtended.encodeWrapETH(positionAmountIn.quotient))
+      ? calldatas.push(PaymentsExtended.encodeWrapRBTC(positionAmountIn.quotient))
       : calldatas.push(PaymentsExtended.encodePull(tokenIn, positionAmountIn.quotient))
 
     // approve token balances to NFTManager
@@ -628,10 +635,10 @@ export abstract class SwapRouter {
 
     // sweep remaining tokens
     inputIsNative
-      ? calldatas.push(PaymentsExtended.encodeUnwrapWETH9(ZERO))
+      ? calldatas.push(PaymentsExtended.encodeUnwrapWRBTC(ZERO))
       : calldatas.push(PaymentsExtended.encodeSweepToken(tokenIn, ZERO))
     outputIsNative
-      ? calldatas.push(PaymentsExtended.encodeUnwrapWETH9(ZERO))
+      ? calldatas.push(PaymentsExtended.encodeUnwrapWRBTC(ZERO))
       : calldatas.push(PaymentsExtended.encodeSweepToken(tokenOut, ZERO))
 
     let value: JSBI
@@ -667,7 +674,7 @@ export abstract class SwapRouter {
       | V3Trade<Currency, Currency, TradeType>
       | MixedRouteTrade<Currency, Currency, TradeType>
   ): boolean {
-    return !(trade instanceof V2Trade) && trade.priceImpact.greaterThan(REFUND_ETH_PRICE_IMPACT_THRESHOLD)
+    return !(trade instanceof V2Trade) && trade.priceImpact.greaterThan(REFUND_RBTC_PRICE_IMPACT_THRESHOLD)
   }
 
   private static getPositionAmounts(

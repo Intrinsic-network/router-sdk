@@ -1114,6 +1114,68 @@
     "@ethersproject/properties" "^5.5.0"
     "@ethersproject/strings" "^5.5.0"
 
+"@intrinsic-network/core@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@intrinsic-network/core/-/core-1.0.0.tgz#17b2f075221900d96463361639760bb28f77dc3b"
+  integrity sha512-svPp+RPeSmf3X8IIxAWFCQpWBX1ZuaH9+xURYXodoeGaZhqUs+XgOv3GkgTwLdyzTrbjmZHx/p1Qr8pQrnv0Hw==
+
+"@intrinsic-network/intrinsic-sdk@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@intrinsic-network/intrinsic-sdk/-/intrinsic-sdk-1.0.0.tgz#42e252dec9d2a2cb3fdc786719f349486578637b"
+  integrity sha512-tpEaQGdeFt5bJHgIg63OssIGErYkf9DX3LWnvtfEL7HULbGwM4ECoaBkAjUevyJpXug9TQJpdhGkGDW0uKXVMg==
+  dependencies:
+    "@ethersproject/abi" "^5.0.12"
+    "@ethersproject/solidity" "^5.0.9"
+    "@intrinsic-network/periphery" "1.2.0"
+    "@intrinsic-network/staker" "1.2.0"
+    "@intrinsic-network/swap-router-contracts" "1.2.0"
+    "@uniswap/sdk-core" "^3.0.1"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+
+"@intrinsic-network/periphery@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@intrinsic-network/periphery/-/periphery-1.2.0.tgz#8281bc92dc6a7b27736b1c6f81dc0bc77d3607f1"
+  integrity sha512-T6aMUN79N/e8vj7TOemn3qba+kosz5E9GmLLZ0ZET95YTNBv1fiR9GPsZVqSEu/sardpqaZMFPqKxrkq1P1cuw==
+  dependencies:
+    "@intrinsic-network/core" "1.0.0"
+    "@openzeppelin/contracts" "3.4.1-solc-0.7-2"
+    "@uniswap/lib" "^4.0.1-alpha"
+    "@uniswap/v2-core" "1.0.1"
+    base64-sol "1.0.1"
+
+"@intrinsic-network/sdk-core@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@intrinsic-network/sdk-core/-/sdk-core-1.0.0.tgz#c6a5fcab45e1260beb239e56271b31884d454901"
+  integrity sha512-0Wb6LSf0HrCDfDONz3EnC9DG1MMl9jgPJKZO+H8aOM98SEqlxYWYsFrYfX9bW94+GLqbpnRdJJ9qIVm52bS2eA==
+  dependencies:
+    "@ethersproject/address" "^5.0.2"
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    jsbi "^3.1.4"
+    tiny-invariant "^1.1.0"
+    toformat "^2.0.0"
+
+"@intrinsic-network/staker@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@intrinsic-network/staker/-/staker-1.2.0.tgz#d0911c566488c672d20b56d681dae8721b6c52d5"
+  integrity sha512-rgx8AcCISJLdZ5so/ie2sZIE7H+IPV/lyvlrrXh7hU0Opqk2YCNtRy5gwkq5wLYJOoLhqwVBnyL0GvoLpbhaMQ==
+  dependencies:
+    "@intrinsic-network/core" "1.0.0"
+    "@intrinsic-network/periphery" "1.2.0"
+    "@openzeppelin/contracts" "3.4.1-solc-0.7-2"
+
+"@intrinsic-network/swap-router-contracts@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@intrinsic-network/swap-router-contracts/-/swap-router-contracts-1.2.0.tgz#28691adfe69c7d0d81642c6de049c780948b4c44"
+  integrity sha512-H2qxFQfFG/G9U41pAD82cfK4fAI/8+I3CphuXIdSsW/FTrfeeqG/avEZhngIxcNvFUtLFV/GzIZdq/S2Qk1NQA==
+  dependencies:
+    "@intrinsic-network/core" "1.0.0"
+    "@intrinsic-network/periphery" "1.2.0"
+    "@openzeppelin/contracts" "3.4.1-solc-0.7-2"
+    "@uniswap/v2-core" "1.0.1"
+    hardhat-watcher "^2.1.1"
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz"
@@ -1582,17 +1644,6 @@
     tiny-invariant "^1.1.0"
     toformat "^2.0.0"
 
-"@uniswap/swap-router-contracts@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@uniswap/swap-router-contracts/-/swap-router-contracts-1.1.0.tgz"
-  integrity sha512-GPmpx1lvjXWloB95+YUabr3UHJYr3scnSS8EzaNXnNrIz9nYZ+XQcMaJxOKe85Yi7IfcUQpj0HzD2TW99dtolA==
-  dependencies:
-    "@openzeppelin/contracts" "3.4.1-solc-0.7-2"
-    "@uniswap/v2-core" "1.0.1"
-    "@uniswap/v3-core" "1.0.0"
-    "@uniswap/v3-periphery" "1.3.0"
-    hardhat-watcher "^2.1.1"
-
 "@uniswap/v2-core@1.0.1":
   version "1.0.1"
   resolved "https://registry.npmjs.org/@uniswap/v2-core/-/v2-core-1.0.1.tgz"
@@ -1608,57 +1659,6 @@
     "@uniswap/sdk-core" "^3.0.0-alpha.3"
     tiny-invariant "^1.1.0"
     tiny-warning "^1.0.3"
-
-"@uniswap/v3-core@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@uniswap/v3-core/-/v3-core-1.0.0.tgz"
-  integrity sha512-kSC4djMGKMHj7sLMYVnn61k9nu+lHjMIxgg9CDQT+s2QYLoA56GbSK9Oxr+qJXzzygbkrmuY6cwgP6cW2JXPFA==
-
-"@uniswap/v3-periphery@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/@uniswap/v3-periphery/-/v3-periphery-1.3.0.tgz"
-  integrity sha512-HjHdI5RkjBl8zz3bqHShrbULFoZSrjbbrRHoO2vbzn+WRzTa6xY4PWphZv2Tlcb38YEKfKHp6NPl5hVedac8uw==
-  dependencies:
-    "@openzeppelin/contracts" "3.4.1-solc-0.7-2"
-    "@uniswap/lib" "^4.0.1-alpha"
-    "@uniswap/v2-core" "1.0.1"
-    "@uniswap/v3-core" "1.0.0"
-    base64-sol "1.0.1"
-    hardhat-watcher "^2.1.1"
-
-"@uniswap/v3-periphery@^1.0.1", "@uniswap/v3-periphery@^1.1.1":
-  version "1.2.1"
-  resolved "https://registry.npmjs.org/@uniswap/v3-periphery/-/v3-periphery-1.2.1.tgz"
-  integrity sha512-45W8hT8X1j9ZcXa+y3NSVao90hMZtgtoJyDlMOg91wmUGi2idXAiGivOQYdB7+7Lq8Gc6Upv/ggFZknixZrv7g==
-  dependencies:
-    "@openzeppelin/contracts" "3.4.1-solc-0.7-2"
-    "@uniswap/lib" "^4.0.1-alpha"
-    "@uniswap/v2-core" "1.0.1"
-    "@uniswap/v3-core" "1.0.0"
-    base64-sol "1.0.1"
-    hardhat-watcher "^2.1.1"
-
-"@uniswap/v3-sdk@^3.8.3":
-  version "3.8.3"
-  resolved "https://registry.yarnpkg.com/@uniswap/v3-sdk/-/v3-sdk-3.8.3.tgz#7e0c3fc4fff4e88c0d5348885e0493b57eaa865b"
-  integrity sha512-5zx8Fi41KyL7IhleZsRTRiX2lo+i0E4ks+IhVeyq0nrRPzO9f4drgHi29VwZaDw0+RWf+OCLm0CURURsJO2MZg==
-  dependencies:
-    "@ethersproject/abi" "^5.0.12"
-    "@ethersproject/solidity" "^5.0.9"
-    "@uniswap/sdk-core" "^3.0.1"
-    "@uniswap/v3-periphery" "^1.1.1"
-    "@uniswap/v3-staker" "1.0.0"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
-
-"@uniswap/v3-staker@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@uniswap/v3-staker/-/v3-staker-1.0.0.tgz"
-  integrity sha512-JV0Qc46Px5alvg6YWd+UIaGH9lDuYG/Js7ngxPit1SPaIP30AlVer1UYB7BRYeUVVxE+byUyIeN5jeQ7LLDjIw==
-  dependencies:
-    "@openzeppelin/contracts" "3.4.1-solc-0.7-2"
-    "@uniswap/v3-core" "1.0.0"
-    "@uniswap/v3-periphery" "^1.0.1"
 
 abab@^2.0.0:
   version "2.0.5"

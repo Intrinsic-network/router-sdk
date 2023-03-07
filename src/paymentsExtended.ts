@@ -1,7 +1,7 @@
 import { Interface } from '@ethersproject/abi'
-import { Percent, Token, validateAndParseAddress } from '@uniswap/sdk-core'
-import { abi } from '@uniswap/swap-router-contracts/artifacts/contracts/interfaces/IPeripheryPaymentsWithFeeExtended.sol/IPeripheryPaymentsWithFeeExtended.json'
-import { FeeOptions, Payments, toHex } from '@uniswap/v3-sdk'
+import { Percent, Token, validateAndParseAddress } from '@intrinsic-network/sdk-core'
+import { abi } from '@intrinsic-network/swap-router-contracts/artifacts/contracts/interfaces/IPeripheryPaymentsWithFeeExtended.sol/IPeripheryPaymentsWithFeeExtended.json'
+import { FeeOptions, Payments, toHex } from '@intrinsic-network/intrinsic-sdk'
 import JSBI from 'jsbi'
 
 function encodeFeeBips(fee: Percent): string {
@@ -16,23 +16,23 @@ export abstract class PaymentsExtended {
    */
   private constructor() {}
 
-  public static encodeUnwrapWETH9(amountMinimum: JSBI, recipient?: string, feeOptions?: FeeOptions): string {
+  public static encodeUnwrapWRBTC(amountMinimum: JSBI, recipient?: string, feeOptions?: FeeOptions): string {
     // if there's a recipient, just pass it along
     if (typeof recipient === 'string') {
-      return Payments.encodeUnwrapWETH9(amountMinimum, recipient, feeOptions)
+      return Payments.encodeUnwrapWRBTC(amountMinimum, recipient, feeOptions)
     }
 
     if (!!feeOptions) {
       const feeBips = encodeFeeBips(feeOptions.fee)
       const feeRecipient = validateAndParseAddress(feeOptions.recipient)
 
-      return PaymentsExtended.INTERFACE.encodeFunctionData('unwrapWETH9WithFee(uint256,uint256,address)', [
+      return PaymentsExtended.INTERFACE.encodeFunctionData('unwrapWRBTCWithFee(uint256,uint256,address)', [
         toHex(amountMinimum),
         feeBips,
         feeRecipient,
       ])
     } else {
-      return PaymentsExtended.INTERFACE.encodeFunctionData('unwrapWETH9(uint256)', [toHex(amountMinimum)])
+      return PaymentsExtended.INTERFACE.encodeFunctionData('unwrapWRBTC(uint256)', [toHex(amountMinimum)])
     }
   }
 
@@ -69,7 +69,7 @@ export abstract class PaymentsExtended {
     return PaymentsExtended.INTERFACE.encodeFunctionData('pull', [token.address, toHex(amount)])
   }
 
-  public static encodeWrapETH(amount: JSBI): string {
-    return PaymentsExtended.INTERFACE.encodeFunctionData('wrapETH', [toHex(amount)])
+  public static encodeWrapRBTC(amount: JSBI): string {
+    return PaymentsExtended.INTERFACE.encodeFunctionData('wrapRBTC', [toHex(amount)])
   }
 }
