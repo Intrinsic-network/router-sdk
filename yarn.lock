@@ -1114,40 +1114,40 @@
     "@ethersproject/properties" "^5.5.0"
     "@ethersproject/strings" "^5.5.0"
 
-"@intrinsic-network/core@1.0.0":
+"@intrinsic-finance/core@1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@intrinsic-network/core/-/core-1.0.0.tgz#17b2f075221900d96463361639760bb28f77dc3b"
-  integrity sha512-svPp+RPeSmf3X8IIxAWFCQpWBX1ZuaH9+xURYXodoeGaZhqUs+XgOv3GkgTwLdyzTrbjmZHx/p1Qr8pQrnv0Hw==
+  resolved "https://registry.yarnpkg.com/@intrinsic-finance/core/-/core-1.0.0.tgz#1d75225da7dbcedd5e852a428e68355fbcbb2658"
+  integrity sha512-Zoa2hKhSalNl3gQYlGSEaKv7G81Q1nZG14HsqIRUoUsTPN5gxNLtt+/XKntoEscjEyAnezgtxce8tpxDqorhhw==
 
-"@intrinsic-network/intrinsic-sdk@1.0.0":
+"@intrinsic-finance/intrinsic-sdk@1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@intrinsic-network/intrinsic-sdk/-/intrinsic-sdk-1.0.0.tgz#42e252dec9d2a2cb3fdc786719f349486578637b"
-  integrity sha512-tpEaQGdeFt5bJHgIg63OssIGErYkf9DX3LWnvtfEL7HULbGwM4ECoaBkAjUevyJpXug9TQJpdhGkGDW0uKXVMg==
+  resolved "https://registry.yarnpkg.com/@intrinsic-finance/intrinsic-sdk/-/intrinsic-sdk-1.0.0.tgz#7fb16fc48e9d78794f012cd783a49a6424f57e4e"
+  integrity sha512-ilWIT5qbMkLEfe10RwTna0AvUlnDKdALD2RoyB+jVs2tkw06qpVSuriHqlM5GeuY3TKQu0yg1AeboQB4whvmhw==
   dependencies:
     "@ethersproject/abi" "^5.0.12"
     "@ethersproject/solidity" "^5.0.9"
-    "@intrinsic-network/periphery" "1.2.0"
-    "@intrinsic-network/staker" "1.2.0"
-    "@intrinsic-network/swap-router-contracts" "1.2.0"
+    "@intrinsic-finance/periphery" "1.0.0"
+    "@intrinsic-finance/staker" "1.0.0"
+    "@intrinsic-finance/swap-router-contracts" "1.0.0"
     "@uniswap/sdk-core" "^3.0.1"
     tiny-invariant "^1.1.0"
     tiny-warning "^1.0.3"
 
-"@intrinsic-network/periphery@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@intrinsic-network/periphery/-/periphery-1.2.0.tgz#8281bc92dc6a7b27736b1c6f81dc0bc77d3607f1"
-  integrity sha512-T6aMUN79N/e8vj7TOemn3qba+kosz5E9GmLLZ0ZET95YTNBv1fiR9GPsZVqSEu/sardpqaZMFPqKxrkq1P1cuw==
+"@intrinsic-finance/periphery@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@intrinsic-finance/periphery/-/periphery-1.0.0.tgz#dce9926bd640d39c18ac8a324c621e417a07a8db"
+  integrity sha512-Gx0MLH9NDk4qVtg6Jzg/InR14yBa4tbYMLysFUUTCXX3nRhMnai0paEVL/+0Q5lEkPcpRZQqphsmYgCZW0J6yg==
   dependencies:
-    "@intrinsic-network/core" "1.0.0"
+    "@intrinsic-finance/core" "1.0.0"
     "@openzeppelin/contracts" "3.4.1-solc-0.7-2"
     "@uniswap/lib" "^4.0.1-alpha"
     "@uniswap/v2-core" "1.0.1"
     base64-sol "1.0.1"
 
-"@intrinsic-network/sdk-core@1.0.0":
+"@intrinsic-finance/sdk-core@1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@intrinsic-network/sdk-core/-/sdk-core-1.0.0.tgz#c6a5fcab45e1260beb239e56271b31884d454901"
-  integrity sha512-0Wb6LSf0HrCDfDONz3EnC9DG1MMl9jgPJKZO+H8aOM98SEqlxYWYsFrYfX9bW94+GLqbpnRdJJ9qIVm52bS2eA==
+  resolved "https://registry.yarnpkg.com/@intrinsic-finance/sdk-core/-/sdk-core-1.0.0.tgz#75b889e7bdb66ee3e413d738f77049752d5e8519"
+  integrity sha512-e30NQQ/YtOZ4cLDwUlLebBE+hSVn5YhxD/Hm3otvOPBnf5dnVTEaQT7QyKH3JwnWAGCGv2ZflLzh+ICHwUsrdg==
   dependencies:
     "@ethersproject/address" "^5.0.2"
     big.js "^5.2.2"
@@ -1156,22 +1156,22 @@
     tiny-invariant "^1.1.0"
     toformat "^2.0.0"
 
-"@intrinsic-network/staker@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@intrinsic-network/staker/-/staker-1.2.0.tgz#d0911c566488c672d20b56d681dae8721b6c52d5"
-  integrity sha512-rgx8AcCISJLdZ5so/ie2sZIE7H+IPV/lyvlrrXh7hU0Opqk2YCNtRy5gwkq5wLYJOoLhqwVBnyL0GvoLpbhaMQ==
+"@intrinsic-finance/staker@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@intrinsic-finance/staker/-/staker-1.0.0.tgz#09c5aac9944461a9fb9461a4e34912884cd7e66e"
+  integrity sha512-vjvzeeCWhjvT8/eV3VzbNtShoScocqQ0T1OVFGclQIB8rg60xGNt+Wp8MFbTakimYycOos36/f9m8nIeH4ihPQ==
   dependencies:
-    "@intrinsic-network/core" "1.0.0"
-    "@intrinsic-network/periphery" "1.2.0"
+    "@intrinsic-finance/core" "1.0.0"
+    "@intrinsic-finance/periphery" "1.0.0"
     "@openzeppelin/contracts" "3.4.1-solc-0.7-2"
 
-"@intrinsic-network/swap-router-contracts@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@intrinsic-network/swap-router-contracts/-/swap-router-contracts-1.2.0.tgz#28691adfe69c7d0d81642c6de049c780948b4c44"
-  integrity sha512-H2qxFQfFG/G9U41pAD82cfK4fAI/8+I3CphuXIdSsW/FTrfeeqG/avEZhngIxcNvFUtLFV/GzIZdq/S2Qk1NQA==
+"@intrinsic-finance/swap-router-contracts@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@intrinsic-finance/swap-router-contracts/-/swap-router-contracts-1.0.0.tgz#435d0b2d7c3aef58441a76dfcea499e074e9f365"
+  integrity sha512-L6W6wo4bAg6oMmqc2V/LY5u27LdpD57zSge8NbRDYF1gasYK+k4H169v3GPdgj3ZDo7/xdTwKGkmP5qsFT0q9w==
   dependencies:
-    "@intrinsic-network/core" "1.0.0"
-    "@intrinsic-network/periphery" "1.2.0"
+    "@intrinsic-finance/core" "1.0.0"
+    "@intrinsic-finance/periphery" "1.0.0"
     "@openzeppelin/contracts" "3.4.1-solc-0.7-2"
     "@uniswap/v2-core" "1.0.1"
     hardhat-watcher "^2.1.1"

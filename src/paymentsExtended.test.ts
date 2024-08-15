@@ -1,4 +1,4 @@
-import { Percent, Token } from '@intrinsic-network/sdk-core'
+import { Percent, Token } from '@intrinsic-finance/sdk-core'
 import JSBI from 'jsbi'
 import { PaymentsExtended } from './paymentsExtended'
 

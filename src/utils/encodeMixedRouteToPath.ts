@@ -1,6 +1,6 @@
 import { pack } from '@ethersproject/solidity'
-import { Currency, Token } from '@intrinsic-network/sdk-core'
-import { Pool } from '@intrinsic-network/intrinsic-sdk'
+import { Currency, Token } from '@intrinsic-finance/sdk-core'
+import { Pool } from '@intrinsic-finance/intrinsic-sdk'
 import { Pair } from '@uniswap/v2-sdk'
 import { MixedRouteSDK } from '../entities/mixedRoute/route'
 import { V2_FEE_PATH_PLACEHOLDER } from '../constants'

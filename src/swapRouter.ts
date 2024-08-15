@@ -6,8 +6,8 @@ import {
   TradeType,
   validateAndParseAddress,
   WRBTC,
-} from '@intrinsic-network/sdk-core'
-import { abi } from '@intrinsic-network/swap-router-contracts/artifacts/contracts/interfaces/ISwapRouter02.sol/ISwapRouter02.json'
+} from '@intrinsic-finance/sdk-core'
+import { abi } from '@intrinsic-finance/swap-router-contracts/artifacts/contracts/interfaces/ISwapRouter02.sol/ISwapRouter02.json'
 import { Trade as V2Trade } from '@uniswap/v2-sdk'
 import {
   encodeRouteToPath,
@@ -20,7 +20,7 @@ import {
   SelfPermit,
   toHex,
   Trade as V3Trade,
-} from '@intrinsic-network/intrinsic-sdk'
+} from '@intrinsic-finance/intrinsic-sdk'
 import invariant from 'tiny-invariant'
 import JSBI from 'jsbi'
 import { ADDRESS_THIS, MSG_SENDER } from './constants'

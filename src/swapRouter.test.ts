@@ -1,4 +1,4 @@
-import { BigintIsh, CurrencyAmount, RBTC, Percent, Token, TradeType, WRBTC } from '@intrinsic-network/sdk-core'
+import { BigintIsh, CurrencyAmount, RBTC, Percent, Token, TradeType, WRBTC } from '@intrinsic-finance/sdk-core'
 import { Pair, Route as V2Route, Trade as V2Trade } from '@uniswap/v2-sdk'
 import {
   encodeSqrtRatioX96,
@@ -10,7 +10,7 @@ import {
   TickMath,
   TICK_SPACINGS,
   Trade as V3Trade,
-} from '@intrinsic-network/intrinsic-sdk'
+} from '@intrinsic-finance/intrinsic-sdk'
 import JSBI from 'jsbi'
 import { SwapRouter, Trade } from '.'
 import { ApprovalTypes } from './approveAndCall'

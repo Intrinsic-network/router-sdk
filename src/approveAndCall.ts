@@ -1,14 +1,14 @@
 import { Interface } from '@ethersproject/abi'
 import invariant from 'tiny-invariant'
-import { abi } from '@intrinsic-network/swap-router-contracts/artifacts/contracts/interfaces/IApproveAndCall.sol/IApproveAndCall.json'
-import { Currency, Percent, Token } from '@intrinsic-network/sdk-core'
+import { abi } from '@intrinsic-finance/swap-router-contracts/artifacts/contracts/interfaces/IApproveAndCall.sol/IApproveAndCall.json'
+import { Currency, Percent, Token } from '@intrinsic-finance/sdk-core'
 import {
   MintSpecificOptions,
   IncreaseSpecificOptions,
   NonfungiblePositionManager,
   Position,
   toHex,
-} from '@intrinsic-network/intrinsic-sdk'
+} from '@intrinsic-finance/intrinsic-sdk'
 import JSBI from 'jsbi'
 
 // condensed version of v3-sdk AddLiquidityOptions containing only necessary swap + add attributes

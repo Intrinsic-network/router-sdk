@@ -1,6 +1,6 @@
-import { CurrencyAmount, RBTC, Token, WRBTC } from '@intrinsic-network/sdk-core'
+import { CurrencyAmount, RBTC, Token, WRBTC } from '@intrinsic-finance/sdk-core'
 import { Pair } from '@uniswap/v2-sdk'
-import { encodeSqrtRatioX96, FeeAmount, Pool } from '@intrinsic-network/intrinsic-sdk'
+import { encodeSqrtRatioX96, FeeAmount, Pool } from '@intrinsic-finance/intrinsic-sdk'
 import { MixedRouteSDK } from '../entities/mixedRoute/route'
 import { encodeMixedRouteToPath } from './encodeMixedRouteToPath'
 
