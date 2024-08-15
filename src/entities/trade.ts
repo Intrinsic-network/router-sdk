@@ -1,6 +1,6 @@
-import { Currency, CurrencyAmount, Fraction, Percent, Price, TradeType } from '@intrinsic-network/sdk-core'
+import { Currency, CurrencyAmount, Fraction, Percent, Price, TradeType } from '@intrinsic-finance/sdk-core'
 import { Pair, Route as V2RouteSDK, Trade as V2TradeSDK } from '@uniswap/v2-sdk'
-import { Pool, Route as V3RouteSDK, Trade as V3TradeSDK } from '@intrinsic-network/intrinsic-sdk'
+import { Pool, Route as V3RouteSDK, Trade as V3TradeSDK } from '@intrinsic-finance/intrinsic-sdk'
 import invariant from 'tiny-invariant'
 import { ONE, ZERO } from '../constants'
 import { MixedRouteSDK } from './mixedRoute/route'

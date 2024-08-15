@@ -7,9 +7,9 @@ import {
   CurrencyAmount,
   TradeType,
   Token,
-} from '@intrinsic-network/sdk-core'
+} from '@intrinsic-finance/sdk-core'
 import { Pair } from '@uniswap/v2-sdk'
-import { BestTradeOptions, Pool } from '@intrinsic-network/intrinsic-sdk'
+import { BestTradeOptions, Pool } from '@intrinsic-finance/intrinsic-sdk'
 import invariant from 'tiny-invariant'
 import { ONE, ZERO } from '../../constants'
 import { MixedRouteSDK } from './route'
@@ -61,7 +61,7 @@ export function tradeComparator<TInput extends Currency, TOutput extends Currenc
  *
  * Does not account for slippage, i.e., changes in price environment that can occur between
  * the time the trade is submitted and when it is executed.
- * @notice This class is functionally the same as the `Trade` class in the `@intrinsic-network/intrinsic-sdk` package, aside from typing and some input validation.
+ * @notice This class is functionally the same as the `Trade` class in the `@intrinsic-finance/intrinsic-sdk` package, aside from typing and some input validation.
  * @template TInput The input token, either Ether or an ERC-20
  * @template TOutput The output token, either Ether or an ERC-20
  * @template TTradeType The trade type, either exact input or exact output

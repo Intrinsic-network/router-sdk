@@ -1,7 +1,7 @@
 import { Interface } from '@ethersproject/abi'
-import { Percent, Token, validateAndParseAddress } from '@intrinsic-network/sdk-core'
-import { abi } from '@intrinsic-network/swap-router-contracts/artifacts/contracts/interfaces/IPeripheryPaymentsWithFeeExtended.sol/IPeripheryPaymentsWithFeeExtended.json'
-import { FeeOptions, Payments, toHex } from '@intrinsic-network/intrinsic-sdk'
+import { Percent, Token, validateAndParseAddress } from '@intrinsic-finance/sdk-core'
+import { abi } from '@intrinsic-finance/swap-router-contracts/artifacts/contracts/interfaces/IPeripheryPaymentsWithFeeExtended.sol/IPeripheryPaymentsWithFeeExtended.json'
+import { FeeOptions, Payments, toHex } from '@intrinsic-finance/intrinsic-sdk'
 import JSBI from 'jsbi'
 
 function encodeFeeBips(fee: Percent): string {

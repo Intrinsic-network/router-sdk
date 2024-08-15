@@ -1,7 +1,7 @@
 import { Interface } from '@ethersproject/abi'
-import { BigintIsh } from '@intrinsic-network/sdk-core'
-import { abi } from '@intrinsic-network/swap-router-contracts/artifacts/contracts/interfaces/IMulticallExtended.sol/IMulticallExtended.json'
-import { Multicall, toHex } from '@intrinsic-network/intrinsic-sdk'
+import { BigintIsh } from '@intrinsic-finance/sdk-core'
+import { abi } from '@intrinsic-finance/swap-router-contracts/artifacts/contracts/interfaces/IMulticallExtended.sol/IMulticallExtended.json'
+import { Multicall, toHex } from '@intrinsic-finance/intrinsic-sdk'
 
 // deadline or previousBlockhash
 export type Validation = BigintIsh | string

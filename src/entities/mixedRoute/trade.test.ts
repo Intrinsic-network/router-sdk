@@ -8,7 +8,7 @@ import {
   WRBTC,
   RBTC,
   Currency,
-} from '@intrinsic-network/sdk-core'
+} from '@intrinsic-finance/sdk-core'
 import { Pair } from '@uniswap/v2-sdk'
 import {
   encodeSqrtRatioX96,
@@ -17,7 +17,7 @@ import {
   Pool,
   TickMath,
   TICK_SPACINGS,
-} from '@intrinsic-network/intrinsic-sdk'
+} from '@intrinsic-finance/intrinsic-sdk'
 import JSBI from 'jsbi'
 import { MixedRouteSDK } from './route'
 import { MixedRouteTrade } from './trade'

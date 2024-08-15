@@ -1,5 +1,5 @@
-import { RBTC, Token, WRBTC, CurrencyAmount } from '@intrinsic-network/sdk-core'
-import { Route as V3RouteSDK, Pool, FeeAmount, TickMath, encodeSqrtRatioX96 } from '@intrinsic-network/intrinsic-sdk'
+import { RBTC, Token, WRBTC, CurrencyAmount } from '@intrinsic-finance/sdk-core'
+import { Route as V3RouteSDK, Pool, FeeAmount, TickMath, encodeSqrtRatioX96 } from '@intrinsic-finance/intrinsic-sdk'
 import { RouteV3 } from './route'
 import { Protocol } from './protocol'
 import { Route as V2RouteSDK, Pair } from '@uniswap/v2-sdk'

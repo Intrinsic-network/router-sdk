@@ -1,9 +1,9 @@
 // entities/route.ts
 
 import { Route as V2RouteSDK, Pair } from '@uniswap/v2-sdk'
-import { Route as V3RouteSDK, Pool } from '@intrinsic-network/intrinsic-sdk'
+import { Route as V3RouteSDK, Pool } from '@intrinsic-finance/intrinsic-sdk'
 import { Protocol } from './protocol'
-import { Currency, Token } from '@intrinsic-network/sdk-core'
+import { Currency, Token } from '@intrinsic-finance/sdk-core'
 import { MixedRouteSDK } from './mixedRoute/route'
 
 export interface IRoute<TInput extends Currency, TOutput extends Currency, TPool extends Pool | Pair> {
